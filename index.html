@@ -50,16 +50,12 @@
         
         script.onload = function (e) {
           script.onload = null
-          console && console.log('onload: ' + e)
           profile(start, type)
         }
         
-        script.onreadystatechange = function (e) {
-        
+        script.onreadystatechange = function () {
           if (script.readyState == 'loaded' || script.readyState == 'complete') {
-          
             script.onreadystatechange = null
-            console && console.log('onreadystatechange: ' + e)
             profile(start, type)
           }
         }
