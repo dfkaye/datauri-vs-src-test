@@ -48,14 +48,9 @@
         
         script.id ='testScript';
         
-        script.onload = function (e) {
-          script.onload = null
-          profile(start, type)
-        }
-        
-        script.onreadystatechange = function () {
-          if (script.readyState == 'loaded' || script.readyState == 'complete') {
-            script.onreadystatechange = null
+        script.onload = script.onreadystatechange = function () {
+          if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
+            script.onload = script.onreadystatechange = null
             profile(start, type)
           }
         }
