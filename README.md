@@ -1,16 +1,21 @@
 datauri-vs-src-test
 ===================
 
-quick html that loads jquery files first, then loads codebase.js
+Quick test html that loads jquery files first, then loads codebase.js 
 
-view this page live at https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html
+Attempts to determine and compare load times between using script.src = URL vs. script.src = dataURIString.
 
-buttons let you re-load the codebase.js as src url or as dataURI.
+View this page live at https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html
 
-results indicate total time for each type of script request.
+Buttons let you re-load the codebase.js as src url or as dataURI.
 
-clear cache before each button test
+Results indicate total time for each type of script request.
 
-leave in cache to see any diffs in http  vs cache-only lookup times.
+*clear cache before each button test*
 
-looks like src wins over dataURI.
+Leave in cache to see any diffs in http vs cache-only lookup times.
+
+So far, looks like src wins over dataURI.
+
+Update 24 JUL 2013 - dataURI performance and power consumption on mobile poorer than URL fetch - 
+see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/)
