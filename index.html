@@ -36,7 +36,7 @@
       var scriptSrc = 'https://static.glassdoor.com/static/js/gd-core.js';
       function runScriptText(){  console.log('scriptText') };
       
-      var scriptText = runScriptText.toString() + '; runScriptText()';
+      var scriptText = codebase.toString() + '; codebase()';
       
       function loadBySrc() {
         createScript(scriptSrc, 'scriptSrc')
