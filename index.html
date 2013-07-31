@@ -42,7 +42,7 @@
       ;(function() {
         
         var scriptUrl = document.location.href;
-        scriptUrl = path.substring(0, path.lastIndexOf('/') + 1);
+        scriptUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
         scriptUrl += 'codebase.js';
         
         // dataURI defined globally in codebase-dataURI.js
