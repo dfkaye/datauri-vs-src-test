@@ -58,6 +58,8 @@
         var testScript = document.getElementById('testScript');
         var parentNode = testScript.parentNode;
         
+        codebase = null;
+        
         parentNode.removeChild(testScript);
         
         return parentNode;
@@ -73,7 +75,6 @@
 
         if (type === 'scriptText') {
           script.text = src;
-          codebase();
           profile(start, type);
           
         } else {
@@ -94,7 +95,9 @@
       }
       
       function profile(start, type) {
-              
+        
+        codebase();
+        
         var end = +new Date();
         var results = document.getElementById(type + 'Results');
         
