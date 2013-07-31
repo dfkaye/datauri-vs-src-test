@@ -1,3 +1,18 @@
+Globalize = {
+ parseFloat: parseFloat,
+ parseInt: parseInt,
+ parseDate: function () {
+   return arguments[0]
+ },
+ culture: function () {
+   return arguments[0]
+ },
+ format: function () {
+   return arguments[0]
+ },
+}
+
+
 function codebase() {
 
 
