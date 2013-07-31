@@ -41,7 +41,7 @@
       var scriptSrc = 'codebase.js';
       function runScriptText(){  console.log('scriptText') };
       
-      var scriptText = codebase.toString() + '; codebase()';
+      var scriptText = codebase.toString();
       
       function loadBySrc() {
         createScript(scriptSrc, 'scriptSrc')
