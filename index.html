@@ -69,19 +69,23 @@
         var script = document.createElement('script');
         
         script.id ='testScript';
-        
-        script.async = true;
-        
-        script.onload = script.onreadystatechange = function () {
-          if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
-            script.onload = script.onreadystatechange = null
-            profile(start, type)
-          }
-        }
-        
+
         if (type === 'scriptText') {
           script.text = src;
+          typeof console != 'undefined' && console.log(codebase);
+          profile(start, type);
+          
         } else {
+          
+          script.async = true;
+          
+          script.onload = script.onreadystatechange = function () {
+            if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
+              script.onload = script.onreadystatechange = null
+              profile(start, type)
+            }
+          }
+          
           script.src = src;
         }
         
@@ -90,7 +94,7 @@
       
       function profile(start, type) {
       
-        var end = new Date().getTime();
+        var end = +new Date();
         var results = document.getElementById(type + 'Results');
         
         results.innerHTML += (type + ' took ' + ((end - start) / 1000) + ' seconds.<br/>')
