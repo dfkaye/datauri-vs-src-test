@@ -1082,5 +1082,5 @@ Y:"MMMM yyyy"}}}})})(this);(function(a){("undefined"!==typeof require&&"undefine
 namesAbbr:"dom,seg,ter,qua,qui,sex,sáb".split(","),namesShort:"D,S,T,Q,Q,S,S".split(",")},months:{names:"janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro,".split(","),namesAbbr:"jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez,".split(",")},AM:null,PM:null,eras:[{name:"d.C.",start:null,offset:0}],patterns:{d:"dd/MM/yyyy",D:"dddd, d' de 'MMMM' de 'yyyy",t:"HH:mm",T:"HH:mm:ss",f:"dddd, d' de 'MMMM' de 'yyyy HH:mm",F:"dddd, d' de 'MMMM' de 'yyyy HH:mm:ss",M:"dd' de 'MMMM",
 Y:"MMMM' de 'yyyy"}}}})})(this);
 
-
+    typeof console != 'undefined' && console.log('codebase loaded with GD: ' + !!GD)
 }
