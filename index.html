@@ -6,8 +6,8 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
     <script id='testScript'></script>
     <!--<script src='https://static.glassdoor.com/static/js/gd-core.js' async='async' id='testScript'></script>-->
-    <script id='testSource'>
-      var scriptSource = (function() { (function(a){a.fn.autofocus=function(){return!0!==this.first().autofocus?this.focus():this}})(jQuery);(function(c){c.fn.autogrow=function(a){return this.each(function(){new c.autogrow(this,a)})};c.autogrow=function(a,b){this.textarea=$(a);this.options=b||{};this.interval=this.shadow=null;this.fontSize=this.textarea.css("fontSize");this.lineHeight=this.options.lineHeight||this.textarea.css("line-height");this.minHeight=this.options.minHeight||this.textarea.css("min-height");this.maxHeight=this.options.maxHeight||this.textarea.css("max-height");this.animateSpeed=this.options.animateSpeed||250;this.DEFAULT_TOLERANCE=
+    <script>
+      var scriptText = (function() { (function(a){a.fn.autofocus=function(){return!0!==this.first().autofocus?this.focus():this}})(jQuery);(function(c){c.fn.autogrow=function(a){return this.each(function(){new c.autogrow(this,a)})};c.autogrow=function(a,b){this.textarea=$(a);this.options=b||{};this.interval=this.shadow=null;this.fontSize=this.textarea.css("fontSize");this.lineHeight=this.options.lineHeight||this.textarea.css("line-height");this.minHeight=this.options.minHeight||this.textarea.css("min-height");this.maxHeight=this.options.maxHeight||this.textarea.css("max-height");this.animateSpeed=this.options.animateSpeed||250;this.DEFAULT_TOLERANCE=
 0.45;this.DEFAULT_TOP_PADDING=3;"string"===typeof this.expandTolerance?this.expandTolerance=parseInt(this.expandTolerance):"number"!=typeof this.expandTolerance&&(this.expandTolerance=-1);this.expandTolerance=!isNaN(this.options.expandTolerance)&&0<=this.options.expandTolerance?this.options.expandTolerance:this.DEFAULT_TOLERANCE;this.fontSize=parseFloat(this.fontSize,10);this.lineHeight=parseFloat(this.lineHeight,10);if(isNaN(this.lineHeight)||this.lineHeight<this.fontSize)this.lineHeight=this.fontSize-
 0+this.DEFAULT_TOP_PADDING;$.browser.msie&&0<this.lineHeight&&this.textarea.css("line-height",this.lineHeight+"px");this.textarea.height(parseFloat(this.lineHeight,10)*parseInt(this.textarea.attr("rows"),10));"auto"===this.minHeight&&(this.minHeight=0);this.minHeight&&(this.minHeight=parseFloat(this.minHeight,10));if(isNaN(this.minHeight)||0==this.minHeight)this.minHeight=Math.max(this.textarea.height(),this.lineHeight);"undefined"===typeof this.maxHeight&&(this.maxHeight=0);isNaN(this.maxHeight)&&
 (this.maxHeight=0);$.browser.msie&&(this.widthSet=!1);var d=this;this.textarea.get(0).resetAutogrow=function(){d.init()};this.init()};c.autogrow.fn=c.autogrow.prototype={autogrow:"1.2.3"};c.autogrow.fn.extend=c.autogrow.extend=c.extend;c.autogrow.fn.extend({init:function(){var a=this;this.textarea.css({overflow:"hidden",display:"block"});this.textarea.bind("focus",function(){a.checkExpand(!0);a.startExpand();return!0}).bind("blur",function(){a.stopExpand();return!0});this.checkExpand(!0)},startExpand:function(){var a=
@@ -1107,11 +1107,15 @@ Y:"MMMM' de 'yyyy"}}}})})(this)  }).toString();
     </p>
     <button type='button' id='loadSrc' onclick='loadBySrc()'>load src</button>
     <button type='button' id='loadDataURI' onclick='loadByDataURI()'>load dataURI</button>
+    <button type='button' id='loadScriptText' onclick='loadByScriptText()'>load ScriptText</button>
+    
     <div>
       <div id='scriptSrcResults' class='results'></div>
       <div id='dataURIResults' class='results'></div>
+      <div id='scriptTextResults' class='results'></div>
     </div>
     <script>
+      var dataURI = ;
       var scriptSrc = 'https://static.glassdoor.com/static/js/gd-core.js';
       
       function loadBySrc() {
@@ -1120,6 +1124,10 @@ Y:"MMMM' de 'yyyy"}}}})})(this)  }).toString();
       
       function loadByDataURI() {
         createScript(dataURI, 'dataURI')
+      }
+      
+      function loadByScriptText() {
+        createScript(scriptText, 'scriptText')
       }
       
       function removeScript() {
@@ -1132,9 +1140,9 @@ Y:"MMMM' de 'yyyy"}}}})})(this)  }).toString();
         return parentNode;
       }
       
-      function createScript(path, type) {
+      function createScript(src, type) {
       
-        var start = new Date().getTime();
+        var start = +new Date();
         var parentNode = removeScript();
         var script = document.createElement('script');
         
@@ -1149,7 +1157,12 @@ Y:"MMMM' de 'yyyy"}}}})})(this)  }).toString();
           }
         }
         
-        script.src = path;
+        if (type === 'scriptText') {
+          script.text = src;
+        } else {
+          script.src = src;
+        }
+        
         parentNode.appendChild(script);
       }
       
