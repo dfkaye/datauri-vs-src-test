@@ -27,10 +27,11 @@
         https://github.com/dfkaye/datauri-vs-src-test
       </a>
     </p>
-    <button type='button' id='loadSrc' onclick='loadBySrc()'>load src</button>
-    <button type='button' id='loadDataURI' onclick='loadByDataURI()'>load dataURI</button>
-    <button type='button' id='loadScriptText' onclick='loadByScriptText()'>load ScriptText</button>
     
+    <button type='button' data-method='scriptSrc'>load scriptSrc</button>
+    <button type='button' data-method='dataURI'>load dataURI</button>
+    <button type='button' data-method='scriptText'>load scriptText</button>
+        
     <div>
       <div id='scriptSrcResults' class='results'></div>
       <div id='dataURIResults' class='results'></div>
@@ -39,36 +40,38 @@
     
     <script>
       // var dataURI defined in codebase-dataURI.js
-      var scriptSrc = 'codebase.js';
+      // codebase defined in codebase.js      
+      var strategies = {
+        'dataURI' : dataURI,
+        'scriptSrc' : 'codebase.js',
+        'scriptText' : codebase.toString();
+      };
+           
+      var buttons = document.getElementsByTagName('button');
       
-      // codebase defined in codebase.js
-      var scriptText = codebase.toString();
+      for (var i = 0; i < buttons.length; ++i) {
       
-      function loadBySrc() {
-        createScript(scriptSrc, 'scriptSrc')
-      }
-      
-      function loadByDataURI() {
-        createScript(dataURI, 'dataURI')
-      }
-      
-      function loadByScriptText() {
-        createScript(scriptText, 'scriptText')
-      }
-      
-      function removeScript() {
-      
-        var testScript = document.getElementById('testScript');
-        var parentNode = testScript.parentNode;
+        var btn = buttons[i];
         
-        //codebase = null;
+        if (btn.addEventListener) {
+          btn.addEventListener('click', onBtnClick, false);
+        } else if (btn.attachEvent) {
+          btn.attachEvent('onclick', onBtnClick, false);
+        } else {
+          btn.onclick = onBtnClick;
+        }
+      }
+
+      function onBtnClick(e) {
+      
+        var target = e.target || e.srcElement || this;
+        var method = target.getAttribute('data-method');
+        var src = strategies[method];
         
-        parentNode.removeChild(testScript);
-        
-        return parentNode;
+        createScript(src, method);
       }
       
-      function createScript(src, type) {
+      function createScript(src, method) {
       
         var start = +new Date();
         var parentNode = removeScript();
@@ -76,9 +79,10 @@
         
         script.id ='testScript';
 
-        if (type === 'scriptText') {
+        if (method === 'scriptText') {
+        
           script.text = src;
-          profile(start, type);
+          profile(start, method);
           
         } else {
           
@@ -87,7 +91,7 @@
           script.onload = script.onreadystatechange = function () {
             if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
               script.onload = script.onreadystatechange = null
-              profile(start, type)
+              profile(start, method)
             }
           }
           
@@ -97,15 +101,25 @@
         parentNode.appendChild(script);
       }
       
-      function profile(start, type) {
+      function profile(start, method) {
         
         codebase();
         
         var end = +new Date();
-        var results = document.getElementById(type + 'Results');
+        var results = document.getElementById(method + 'Results');
         
-        results.innerHTML += (type + ' took ' + ((end - start) / 1000) + ' seconds.<br/>')
+        results.innerHTML += (method + ' took ' + ((end - start) / 1000) + ' seconds.<br/>')
       }
+      
+      function removeScript() {
+      
+        var testScript = document.getElementById('testScript');
+        var parentNode = testScript.parentNode;
+                
+        parentNode.removeChild(testScript);
+        
+        return parentNode;
+      }      
     </script>
   </body>
 </html>
