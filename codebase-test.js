@@ -34,9 +34,14 @@
   
     var target = e.target || e.srcElement || this;
     var method = target.getAttribute('data-method');
-    var src = strategies[method];
+    var src;
     
-    createScript(src, method);
+    if (method == 'removeScript') {
+      removeScript()
+    } else {
+      src = strategies[method];
+      createScript(src, method);
+    }
   }
   
   function createScript(src, method) {
