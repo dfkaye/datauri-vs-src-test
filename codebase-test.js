@@ -102,8 +102,5 @@
     
     return parentNode;
   }
-  
-  // start clean
-  removeScript();
 
 }());
