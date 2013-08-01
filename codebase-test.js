@@ -74,16 +74,16 @@
   
   function profile(start, method) {
     
-    var i = 0;
-    var interval = setInterval(function() {
-      if (typeof codebase == 'function') {
-        clearInterval(interval);
-        codebase();
-      } else {
-        console.log(i += 1)
-      }
-    }, 0);
-    
+    // var i = 0;
+    // var interval = setInterval(function() {
+    //   if (typeof codebase == 'function') {
+    //     clearInterval(interval);
+    //     codebase();
+    //   } else {
+    //     console.log(i += 1)
+    //   }
+    // }, 0);
+    codebase();
     var end = +new Date();
     var results = document.getElementById(method + 'Results');
     
