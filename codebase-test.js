@@ -56,12 +56,12 @@
 
     if (method === 'scriptText') {
     
-      script.text = src;
-      
-      var i = 0;
-      while (typeof window.codebase != 'function' && i < 1000000) {
-        i += 1;
+      try {
+        script.appendChild(document.createTextNode(src));
+      } catch (e) {
+        script.text = src;
       }
+      
       console.log('done')
       profile(start, method);
       
