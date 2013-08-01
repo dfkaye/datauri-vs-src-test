@@ -56,10 +56,13 @@
 
     if (method === 'scriptText') {
     
-      try {script.text = src;} catch (err) {
+      try {
+        script.text = src;
+      } catch (err) {
+        console.log(err)
+        profile(start, method);        
       } finally {
-      console.log(window)
-      profile(start, method);
+
       }
       
     } else {
