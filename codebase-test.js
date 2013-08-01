@@ -59,7 +59,7 @@
       script.text = src;
       
       var i = 0;
-      while (typeof window.codebase != 'function' && i < 100000) {
+      while (typeof window.codebase != 'function' && i < 1000000) {
         i += 1;
       }
       console.log('done')
