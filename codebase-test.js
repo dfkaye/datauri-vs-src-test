@@ -54,14 +54,16 @@
     
     script.id ='testScript';
 
-    if (method === 'scriptText') {
-    
       parentNode.appendChild(script);
+
+    if (method === 'scriptText') {
+      // script text is not applied until attached to document
       script.text = src;
       profile(start, method);
 
     } else {
 
+      // script load handler must be defined before defining src attribute
       script.onload = script.onreadystatechange = function () {
         if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
           script.onload = script.onreadystatechange = null
@@ -69,8 +71,9 @@
         }
       }
     
+      // 
       script.src = src;
-      parentNode.appendChild(script);
+      //parentNode.appendChild(script);
     }
     
     
