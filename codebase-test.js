@@ -9,6 +9,8 @@
   
   var scriptSrcText = window.codebase.toString();
   
+  removeScript();
+  
   // dataURI defined globally in codebase-dataURI.js
   // codebase defined globally in codebase.js      
   var strategies = {
@@ -89,7 +91,9 @@
   
     var testScript = document.getElementById('testScript');
     var parentNode;
-        
+    
+    window.codebase = null;
+
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
     }
