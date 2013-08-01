@@ -54,10 +54,10 @@
     
     script.id ='testScript';
 
-      parentNode.appendChild(script);
 
     if (method === 'scriptText') {
       // script text is not applied until attached to document
+      parentNode.appendChild(script);      
       script.text = src;
       profile(start, method);
 
@@ -71,9 +71,9 @@
         }
       }
     
-      // 
+      // IE won't load src if script is already attached...
       script.src = src;
-      //parentNode.appendChild(script);
+      parentNode.appendChild(script);
     }
     
     
