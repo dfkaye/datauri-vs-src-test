@@ -74,7 +74,15 @@
   
   function profile(start, method) {
     
-    codebase();
+    var i = 0;
+    var interval = setInterval(function() {
+      if (typeof codebase == 'function') {
+        clearInterval(interval);
+        codebase();
+      } else {
+        console.log(i += 1)
+      }
+    }, 0);
     
     var end = +new Date();
     var results = document.getElementById(method + 'Results');
