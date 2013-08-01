@@ -12,7 +12,7 @@
   var strategies = {
     'dataURI' : dataURI,
     'scriptSrc' : scriptUrl,
-    'scriptText' : codebase.toString()
+    'scriptText' : window.codebase.toString()
   };
        
   var buttons = document.getElementsByTagName('button');
@@ -74,7 +74,7 @@
   
   function profile(start, method) {
     
-    codebase();
+    window.codebase();
     
     var end = +new Date();
     var results = document.getElementById(method + 'Results');
