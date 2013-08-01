@@ -58,7 +58,7 @@
     
       parentNode.appendChild(script);
       script.text = src;
-      profile(start, end)
+      profile(start, method);
 
     } else {
 
