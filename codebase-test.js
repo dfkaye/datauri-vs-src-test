@@ -57,12 +57,13 @@
       script.text = src;
       
       //
-      var i = 0;
-      while(typeof codebase != 'function' && i < 100000) {
-        // do nothing - just wait
-        i += 1;
-      }
-      profile(start, method);
+      // var i = 0;
+      // while(typeof codebase != 'function' && i < 100000) {
+      //   // do nothing - just wait
+      //   i += 1;
+      // }
+      console.log(typeof codebase)
+      //profile(start, method);
       
     } else {
             
@@ -102,7 +103,7 @@
     var testScript = document.getElementById('testScript');
     var parentNode;
     
-    codebase = null;
+    delete codebase;
     
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
