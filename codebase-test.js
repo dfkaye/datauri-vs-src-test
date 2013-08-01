@@ -62,7 +62,6 @@
         script.text = src;
       }
       
-      console.log('done')
       profile(start, method);
       
     } else {
