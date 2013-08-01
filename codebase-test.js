@@ -8,9 +8,7 @@
   scriptUrl += 'codebase.js';
   
   var scriptSrcText = window.codebase.toString();
-  
-  removeScript();
-  
+    
   // dataURI defined globally in codebase-dataURI.js
   // codebase defined globally in codebase.js      
   var strategies = {
@@ -105,4 +103,7 @@
     return parentNode;
   }
   
+  // start clean
+  removeScript();
+
 }());
