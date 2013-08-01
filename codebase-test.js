@@ -7,12 +7,14 @@
   scriptUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
   scriptUrl += 'codebase.js';
   
+  var scriptSrcText = window.codebase.toString();
+  
   // dataURI defined globally in codebase-dataURI.js
   // codebase defined globally in codebase.js      
   var strategies = {
     'dataURI' : dataURI,
     'scriptSrc' : scriptUrl,
-    'scriptText' : window.codebase.toString()
+    'scriptText' : scriptSrcText
   };
        
   var buttons = document.getElementsByTagName('button');
@@ -55,6 +57,7 @@
     if (method === 'scriptText') {
     
       script.text = src;
+      console.log(window)
       profile(start, method);
       
     } else {
