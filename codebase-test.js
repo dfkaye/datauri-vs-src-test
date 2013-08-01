@@ -53,21 +53,18 @@
     var script = document.createElement('script');
     
     script.id ='testScript';
-
+    script.onload = script.onreadystatechange = function () {
+      if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
+        script.onload = script.onreadystatechange = null
+        profile(start, method)
+      }
+    }
     if (method === 'scriptText') {
     
-      script.text = src + '; profile(' + start + ', \'' + method + '\')';
+      script.text = src;
       
-      
-      
+
     } else {
-            
-      script.onload = script.onreadystatechange = function () {
-        if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
-          script.onload = script.onreadystatechange = null
-          profile(start, method)
-        }
-      }
       
       script.src = src;
     }
