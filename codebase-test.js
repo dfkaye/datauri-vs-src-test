@@ -56,7 +56,13 @@
 
     if (method === 'scriptText') {
     
-      script.innerHTML = src;
+      script.text = src;
+      
+      var i = 0;
+      while (typeof window.codebase != 'function' && i < 100000) {
+        i += 1;
+      }
+      console.log('done')
       profile(start, method);
       
     } else {
