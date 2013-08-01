@@ -73,12 +73,6 @@ a bit faster than URL, but was quite crash prone in Chrome and Firefox.
 </table>
 
 
-[ 31 JUL 2013 ] - looks like src and scriptText are w/in 20ms; both win over dataURI.
-
-[ 24 JUL 2013 ] - dataURI performance and power consumption on mobile poorer than URL fetch - 
-see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/)
-
-
 __Discussion__
 
 The point of all this is to ferret out performance gains in time-to-first-byte and time-to-load.
@@ -89,6 +83,10 @@ Using script.src means you don't have to stringify the script file.
 
 Both text and dataURI mean more bytes in the initial page load if they're inlined.
 But if they reside as vars inside a src-referenced script, the html initial payload isn't so bloated.
+
+[ 24 JUL 2013 ] - dataURI performance and power consumption on mobile poorer than URL fetch - 
+see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/)
+
 
 __Next Question__
 
