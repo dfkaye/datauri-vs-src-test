@@ -56,9 +56,11 @@
 
     if (method === 'scriptText') {
     
-      script.text = src;
+      try {script.text = src;} catch (err) {
+      } finally {
       console.log(window)
       profile(start, method);
+      }
       
     } else {
             
@@ -90,7 +92,7 @@
     var testScript = document.getElementById('testScript');
     var parentNode;
     
-    delete window.codebase;
+    window.codebase = null;
 
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
