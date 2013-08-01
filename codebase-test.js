@@ -53,9 +53,7 @@
       profile(start, method);
       
     } else {
-      
-      script.async = true;
-      
+            
       script.onload = script.onreadystatechange = function () {
         if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
           script.onload = script.onreadystatechange = null
