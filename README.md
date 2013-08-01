@@ -69,7 +69,7 @@ a bit faster than URL, but was quite crash prone in Chrome and Firefox.
       <td>500ms</td>
       <td>200ms</td>      
     </tr>
-  </body>
+  </tbody>
 </table>
 
 
@@ -77,6 +77,7 @@ a bit faster than URL, but was quite crash prone in Chrome and Firefox.
 
 [ 24 JUL 2013 ] - dataURI performance and power consumption on mobile poorer than URL fetch - 
 see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/)
+
 
 __Discussion__
 
