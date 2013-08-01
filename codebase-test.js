@@ -90,7 +90,7 @@
     var testScript = document.getElementById('testScript');
     var parentNode;
     
-    window.codebase = null;
+    delete window.codebase;
 
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
