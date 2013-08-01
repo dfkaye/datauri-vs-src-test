@@ -75,8 +75,6 @@
       script.src = src;
       parentNode.appendChild(script);
     }
-    
-    
   }
   
   function profile(start, method) {
