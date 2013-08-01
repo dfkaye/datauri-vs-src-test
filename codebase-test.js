@@ -55,6 +55,11 @@
     if (method === 'scriptText') {
     
       script.text = src;
+      
+      // 
+      while(typeof codebase != 'function') {
+        // do nothing - just wait
+      }
       profile(start, method);
       
     } else {
