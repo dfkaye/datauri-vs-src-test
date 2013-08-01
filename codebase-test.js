@@ -62,8 +62,8 @@
       //   // do nothing - just wait
       //   i += 1;
       // }
-      console.log(typeof codebase)
-      //profile(start, method);
+      //console.log(typeof codebase)
+      profile(start, method);
       
     } else {
             
