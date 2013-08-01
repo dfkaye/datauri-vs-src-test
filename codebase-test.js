@@ -57,7 +57,7 @@
     if (method === 'scriptText') {
     
       try {
-        script.text = src;
+        script.innerHTML = src;
       } catch (err) {
         console.log(err)
         profile(start, method);        
