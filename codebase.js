@@ -1,3 +1,5 @@
+codebase = null;
+
 function codebase() {
 
 
