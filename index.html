@@ -15,8 +15,14 @@
         padding: 2px 2px 2px 8px;
       }
       .sm {
-        
         font-size: smaller;
+      }
+      button:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
       }
     </style>
   </head>
@@ -36,20 +42,24 @@
       or <code>script.text</code>.
     </p>
     
+    <div>
+      <div id='scriptSrcResults' class='results'>
+        <button type='button' data-method='scriptSrc'>load scriptSrc</button>
+      </div>
+      <div id='dataURIResults' class='results'>
+        <button type='button' data-method='dataURI'>load dataURI</button>
+      </div>
+      <div id='scriptTextResults' class='results'>
+        <button type='button' data-method='scriptText'>load scriptText</button>
+      </div>
+    </div>
+
     <p class='sm'>
       The remove() button manually unloads the test script tag and nullifies the 
       global codebase variable.
     </p>
-    
-    
-    
-    <button type='button' data-method='removeScript'>removeScript()</button>
 
-    <div>
-      <div id='scriptSrcResults' class='results'><button type='button' data-method='scriptSrc'>load scriptSrc</button></div>
-      <div id='dataURIResults' class='results'><button type='button' data-method='dataURI'>load dataURI</button></div>
-      <div id='scriptTextResults' class='results'><button type='button' data-method='scriptText'>load scriptText</button></div>
-    </div>
+    <button type='button' data-method='removeScript'>removeScript()</button>
     
     <script src='codebase-test.js'></script>
   </body>
