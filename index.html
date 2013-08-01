@@ -35,16 +35,17 @@
       Buttons load javascript codebase by one of three methods - src URL, dataURI,
       or <code>script.text</code>.
     </p>
+    
+    <p class='sm'>
+      The remove() button manually unloads the test script tag and nullifies the 
+      global codebase variable.
+    </p>
+    
     <button type='button' data-method='scriptSrc'>load scriptSrc</button>
     <button type='button' data-method='dataURI'>load dataURI</button>
     <button type='button' data-method='scriptText'>load scriptText</button>
     <button type='button' data-method='removeScript'>removeScript()</button>
-    
-    <p class='sm'>
-      Note: The remove() button is used for debugging (manually 
-      unloading the test script tag and nullifying the global codebase variable) the 
-      script.text strategy.
-    </p>
+
     <div>
       <div id='scriptSrcResults' class='results'></div>
       <div id='dataURIResults' class='results'></div>
