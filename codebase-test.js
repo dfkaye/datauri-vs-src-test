@@ -56,9 +56,11 @@
     
       script.text = src;
       
-      // 
-      while(typeof codebase != 'function') {
+      //
+      var i = 0;
+      while(typeof codebase != 'function' && i < 100000) {
         // do nothing - just wait
+        i += 1;
       }
       profile(start, method);
       
