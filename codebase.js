@@ -1,7 +1,4 @@
-codebase = null;
-
-function codebase() {
-
+window.codebase = function codebase() {
 
 (function(a){a.fn.autofocus=function(){return!0!==this.first().autofocus?this.focus():this}})(jQuery);(function(c){c.fn.autogrow=function(a){return this.each(function(){new c.autogrow(this,a)})};c.autogrow=function(a,b){this.textarea=$(a);this.options=b||{};this.interval=this.shadow=null;this.fontSize=this.textarea.css("fontSize");this.lineHeight=this.options.lineHeight||this.textarea.css("line-height");this.minHeight=this.options.minHeight||this.textarea.css("min-height");this.maxHeight=this.options.maxHeight||this.textarea.css("max-height");this.animateSpeed=this.options.animateSpeed||250;this.DEFAULT_TOLERANCE=
 0.45;this.DEFAULT_TOP_PADDING=3;"string"===typeof this.expandTolerance?this.expandTolerance=parseInt(this.expandTolerance):"number"!=typeof this.expandTolerance&&(this.expandTolerance=-1);this.expandTolerance=!isNaN(this.options.expandTolerance)&&0<=this.options.expandTolerance?this.options.expandTolerance:this.DEFAULT_TOLERANCE;this.fontSize=parseFloat(this.fontSize,10);this.lineHeight=parseFloat(this.lineHeight,10);if(isNaN(this.lineHeight)||this.lineHeight<this.fontSize)this.lineHeight=this.fontSize-
@@ -1084,5 +1081,5 @@ Y:"MMMM yyyy"}}}})})(this);(function(a){("undefined"!==typeof require&&"undefine
 namesAbbr:"dom,seg,ter,qua,qui,sex,sáb".split(","),namesShort:"D,S,T,Q,Q,S,S".split(",")},months:{names:"janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro,".split(","),namesAbbr:"jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez,".split(",")},AM:null,PM:null,eras:[{name:"d.C.",start:null,offset:0}],patterns:{d:"dd/MM/yyyy",D:"dddd, d' de 'MMMM' de 'yyyy",t:"HH:mm",T:"HH:mm:ss",f:"dddd, d' de 'MMMM' de 'yyyy HH:mm",F:"dddd, d' de 'MMMM' de 'yyyy HH:mm:ss",M:"dd' de 'MMMM",
 Y:"MMMM' de 'yyyy"}}}})})(this);
 
-    typeof console != 'undefined' && console.log('codebase loaded with GD: ' + !!GD)
+  typeof console != 'undefined' && console.log('codebase loaded with GD: ' + !!GD)
 }
