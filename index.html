@@ -36,22 +36,21 @@
       or <code>script.text</code>.
     </p>
     
+    <p class='sm'>
+      The remove() button manually unloads the test script tag and nullifies the 
+      global codebase variable.
+    </p>
+
     <button type='button' data-method='scriptSrc'>load scriptSrc</button>
     <button type='button' data-method='dataURI'>load dataURI</button>
     <button type='button' data-method='scriptText'>load scriptText</button>
+    <button type='button' data-method='removeScript'>removeScript()</button>
 
     <div>
       <div id='scriptSrcResults' class='results'></div>
       <div id='dataURIResults' class='results'></div>
       <div id='scriptTextResults' class='results'></div>
     </div>
-
-    <p class='sm'>
-      The remove() button manually unloads the test script tag and nullifies the 
-      global codebase variable.
-    </p>
-
-    <button type='button' data-method='removeScript'>removeScript()</button>
     
     <script src='codebase-test.js'></script>
   </body>
