@@ -56,14 +56,8 @@
 
     if (method === 'scriptText') {
     
-      try {
-        script.innerHTML = src;
-      } catch (err) {
-        console.log(err)
-        profile(start, method);        
-      } finally {
-
-      }
+      script.innerHTML = src;
+      profile(start, method);
       
     } else {
             
