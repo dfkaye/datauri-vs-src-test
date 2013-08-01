@@ -55,14 +55,6 @@
     if (method === 'scriptText') {
     
       script.text = src;
-      
-      //
-      // var i = 0;
-      // while(typeof codebase != 'function' && i < 100000) {
-      //   // do nothing - just wait
-      //   i += 1;
-      // }
-      //console.log(typeof codebase)
       profile(start, method);
       
     } else {
@@ -82,16 +74,8 @@
   
   function profile(start, method) {
     
-    // var i = 0;
-    // var interval = setInterval(function() {
-    //   if (typeof codebase == 'function') {
-    //     clearInterval(interval);
-    //     codebase();
-    //   } else {
-    //     console.log(i += 1)
-    //   }
-    // }, 0);
     codebase();
+    
     var end = +new Date();
     var results = document.getElementById(method + 'Results');
     
@@ -102,9 +86,7 @@
   
     var testScript = document.getElementById('testScript');
     var parentNode;
-    
-    delete codebase;
-    
+        
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
     }
