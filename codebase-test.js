@@ -87,6 +87,8 @@
     var testScript = document.getElementById('testScript');
     var parentNode;
     
+    codebase = null;
+    
     if (!testScript ) {
       return document.getElementsByTagName('head')[0];
     }
