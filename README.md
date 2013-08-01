@@ -20,7 +20,58 @@ Leave in cache to see any diffs in http vs cache-only lookup times.
 
 __Results__
 
-So far, looks like src wins over dataURI.
+[ 1 AUG 2013 ] 
+
+Originally this test covered only the src attribute, comparing URL vs dataURI performance, the URL 
+pointing to a static CDN domain.  In that setup, URL generally outperformed the dataURI across 
+browsers - except for Internet Explorer (8-10) which processed the dataURI even faster than Chrome.
+
+After adding the script.text strategy, the scripts needed to be modified so that all create > exec >
+profile sequences were fair.  That meant moving the remote script to this repo and wrapping the entire 
+script body in a function that could be called externally by any of the three strategies.  This gives 
+more control over the source, and, apparently, prevents script caching in the browser, due to the 
+proxying done by rawgithub.
+
+Results of the 3 strategies now mimic an empty cache (so it's first-hit comparison only).  Script.text 
+wins for all but IE where text vs URL are within 20ms (ymmv).  URL performs worst except in IE again.  
+(Previously, when hitting the static CDN, URL performed *best* - except in IE).  Using dataURI performed 
+a bit faster than URL, but was quite crash prone in Chrome and Firefox.
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Chrome </th>
+      <th>Firefox 22</th>
+      <th>Opera 12</th>
+      <th>IE 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>script.text</th>
+      <td>80ms</td>
+      <td>40ms</td>
+      <td>30ms</td>
+      <td>200ms</td>      
+    </tr>
+    <tr>
+      <th>dataURI</th>
+      <td>200ms</td>
+      <td>200ms</td>
+      <td>200ms</td>
+      <td>200ms</td>      
+    </tr>    
+    <tr>
+      <th>src URL</th>
+      <td>500ms</td>
+      <td>500ms</td>
+      <td>500ms</td>
+      <td>200ms</td>      
+    </tr>
+  </body>
+</table>
+
 
 [ 31 JUL 2013 ] - looks like src and scriptText are w/in 20ms; both win over dataURI.
 
