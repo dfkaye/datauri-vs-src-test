@@ -56,7 +56,7 @@
 
     if (method === 'scriptText') {
     
-      script.text = src + '; profile(' + start + ', ' + method +')';
+      script.text = src + '; profile(' + start.toString() + ', ' + method.toString() + ')';
       
       
       
