@@ -53,23 +53,27 @@
     var script = document.createElement('script');
     
     script.id ='testScript';
-    script.onload = script.onreadystatechange = function () {
-      if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
-        script.onload = script.onreadystatechange = null
-        profile(start, method)
-      }
-    }
+
     if (method === 'scriptText') {
     
+      parentNode.appendChild(script);
       script.text = src;
-      
+      profile(start, end)
 
     } else {
-      
+
+      script.onload = script.onreadystatechange = function () {
+        if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
+          script.onload = script.onreadystatechange = null
+          profile(start, method)
+        }
+      }
+    
       script.src = src;
+      parentNode.appendChild(script);
     }
     
-    parentNode.appendChild(script);
+    
   }
   
   function profile(start, method) {
