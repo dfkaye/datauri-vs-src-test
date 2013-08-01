@@ -85,7 +85,13 @@
   function removeScript() {
   
     var testScript = document.getElementById('testScript');
-    var parentNode = testScript.parentNode;
+    var parentNode;
+    
+    if (!testScript ) {
+      return document.getElementsByTagName('head')[0];
+    }
+    
+    parentNode = testScript.parentNode;
             
     parentNode.removeChild(testScript);
     
