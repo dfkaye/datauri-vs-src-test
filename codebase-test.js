@@ -56,16 +56,9 @@
 
     if (method === 'scriptText') {
     
-      // try {
-      //   script.appendChild(document.createTextNode(src));
-      // } catch (e) {
-      //   script.text = src;
-      // }
+      script.text = src + '; profile(start, method)';
       
-      var fn = Function(src);
-      fn();
       
-      profile(start, method);
       
     } else {
             
