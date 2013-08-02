@@ -10,7 +10,7 @@ Attempts to determine and compare load times between dynamic script loading stra
 
 Test page loads jquery files first, then loads codebase.js 
 
-View the test page live on rawgithub.com (thanks again, @yaypie) at 
+View the test page live on rawgithub.com (thanks again, to Ryan Grove ~ @rgrove) at 
 [https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html](https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html)
 
 Buttons let you re-load the codebase.js using the various strategies.
