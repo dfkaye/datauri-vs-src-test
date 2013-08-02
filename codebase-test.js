@@ -56,12 +56,13 @@
     
     script.id ='testScript';
 
-    if (method === 'newFunction') {
+    if (method == 'newFunction') {
       
-      newFunction();
+      console.log(src)
+      src();
       profile(start, method);
       
-    } else if (method === 'scriptText') {
+    } else if (method == 'scriptText') {
       // script text is not applied until attached to document
       parentNode.appendChild(script);      
       script.text = src;
