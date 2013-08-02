@@ -90,9 +90,13 @@ __[1 AUG 2013 ]__
 Setting <code>window.codebase = null;</code> in the removeScript() function revealed that script should be 
 attached to the DOM *before* <code>script.text = ...<code> assignment ~ __order matters!__
 
+__Next Up__
 
-__Next Question__
+[1 AUG 2013 ] add Function(text) invocation test.
 
-[ 31 JUL 2013] - How do we use browsers' built-in lookahead + prefetch capabilities effectively to 
+[ 31 JUL 2013] - explore browsers' built-in lookahead + prefetch capabilities effectively to 
 load additional scripts as strings, such as in a build map file with each script url containing the
-stringified version of the source?
+stringified version of the source *(this will probably be in its own repo).*
+
+
+
