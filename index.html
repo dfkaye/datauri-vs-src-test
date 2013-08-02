@@ -36,8 +36,9 @@
     </p>
     
     <p>
-      Buttons load javascript codebase by one of three methods - src URL, dataURI,
-      or <code>script.text</code>.
+      Buttons load javascript codebase by one of four methods: 
+      <code>script.src = scriptUrl</code>, <code>script.src = dataURI</code>,
+      <code>script.text = code</code> or <code>new Function(code)</code>.
     </p>
     
     <p class='sm'>
@@ -45,15 +46,18 @@
       global codebase variable.
     </p>
 
-    <button type='button' data-method='scriptSrc'>load scriptSrc</button>
-    <button type='button' data-method='dataURI'>load dataURI</button>
-    <button type='button' data-method='scriptText'>load scriptText</button>
+    <button type='button' data-method='scriptUrl'>criptUrl</button>
+    <button type='button' data-method='dataURI'>dataURI</button>
+    <button type='button' data-method='scriptText'>scriptText</button>
+    <button type='button' data-method='newFunction'>newFunction</button>
     <button type='button' data-method='removeScript'>removeScript()</button>
+    
 
     <div>
-      <div id='scriptSrcResults' class='results'></div>
+      <div id='scriptUrlResults' class='results'></div>
       <div id='dataURIResults' class='results'></div>
       <div id='scriptTextResults' class='results'></div>
+      <div id='newFunctionResults' class='results'></div>
     </div>
     
     <script src='codebase-test.js'></script>
