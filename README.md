@@ -36,7 +36,7 @@ script body in a function that could be called externally by any of the three st
 more control over the source, and, apparently, prevents script caching in the browser, due to the 
 proxying done by rawgithub.
 
-Results of the 3 script dom element strategies now mimic an empty cache (so it's first-hit comparison only).  
+Results of the 3 scripted dom element strategies now mimic an empty cache (so it's first-hit comparison only).  
 The <code>script.text = code</code> strategy wins for all but IE where text vs URL are within 20ms (ymmv).  
 The <code>script.src = url</code> strategy performs worst - except in IE again - but previously, when hitting 
 the static CDN, <code>script.src</code> performed *best* - except in IE).  
@@ -94,8 +94,9 @@ The point of all this had been to ferret out performance gains in time-to-first-
 
 [2 AUG 2013 ] - However, the <code>Function(code)</code> strategy appears to have best performance 
 across the board, barely ahead of <code>script.text = code</code>.  In Chrome, the *first* invocation 
-of <code>Function(code)</code> 
-__always__ took 100+ ms.
+of <code>Function(code)</code> __always__ took 100+ ms.  Tobie Langel was right. Lazy evaluation reduces 
+startup latency: [Lazy evaluation of CommonJS modules](http://calendar.perfplanet.com/2011/lazy-evaluation-of-commonjs-modules/)
+
 
 Using dataURI means the script source is larger than the original.
 
