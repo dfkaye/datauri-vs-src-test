@@ -1,22 +1,28 @@
-script.src={datauri-vs-src} vs script.text
-==========================================
+Script loading performance tests
+================================
 
-Quick test loads jquery files first, then loads codebase.js 
+Attempts to determine and compare load times between dynamic script loading strategies:
 
-Attempts to determine and compare load times between using <code>script.src = URL</code> 
-vs. <code>script.src = dataURIString</code>.
++ <code>script.src = url</code>
++ <code>script.src = dataURI</code>
++ <code>script.text = code</code> (added 1 Aug 2013)
++ <code>Function(code)</code> (added 2 Aug 2013)
 
-[ 31 JUL 2013 ] - added <code>script.text = scriptText<code> test.
+Test page loads jquery files first, then loads codebase.js 
 
-View this page live at 
+View the test page live on rawgithub.com (thanks again, @yaypie) at 
 [https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html](https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html)
 
-Buttons let you re-load the codebase.js as a URL or as dataURI, or as script text content.
+Buttons let you re-load the codebase.js using the various strategies.
 
-Results indicate total time for each type of script request.
+Results indicate total time for each type of strategy (clean, get, run, end).
 
 
 __Results__
+
+[ 2 AUG 2013 ]
+
+Added <code>Function(code)</code> strategy to compare performance vs. scripting dom elements.
 
 [ 1 AUG 2013 ] 
 
@@ -30,16 +36,20 @@ script body in a function that could be called externally by any of the three st
 more control over the source, and, apparently, prevents script caching in the browser, due to the 
 proxying done by rawgithub.
 
-Results of the 3 strategies now mimic an empty cache (so it's first-hit comparison only).  Script.text 
-wins for all but IE where text vs URL are within 20ms (ymmv).  URL performs worst except in IE again.  
-(Previously, when hitting the static CDN, URL performed *best* - except in IE).  Using dataURI performed 
-a bit faster than URL, but was __quite crash prone__ in Chrome and Firefox.
+Results of the 3 script dom element strategies now mimic an empty cache (so it's first-hit comparison only).  
+The <code>script.text = code</code> strategy wins for all but IE where text vs URL are within 20ms (ymmv).  
+The <code>script.src = url</code> strategy performs worst - except in IE again - but previously, when hitting 
+the static CDN, <code>script.src</code> performed *best* - except in IE).  
+
+The <code>script.src = dataURI</code> strategy performed a bit faster than <code>script.src = url</code> - 
+except that it was __quite crash prone__ in Chrome and Firefox, and often performed orders of magnitude worse in 
+Firefox on the first hit.
 
 <table>
   <thead>
     <tr>
       <th></th>
-      <th>Chrome </th>
+      <th>Chrome 28</th>
       <th>Firefox 22</th>
       <th>Opera 12</th>
       <th>IE 10</th>
@@ -47,16 +57,9 @@ a bit faster than URL, but was __quite crash prone__ in Chrome and Firefox.
   </thead>
   <tbody>
     <tr>
-      <th>script.text</th>
-      <td>80ms</td>
-      <td>40ms</td>
-      <td>30ms</td>
-      <td>200ms</td>      
-    </tr>
-    <tr>
       <th>dataURI</th>
-      <td>200ms</td>
-      <td>200ms</td>
+      <td>200ms (crash prone)</td>
+      <td>200ms (crash prone)</td>
       <td>200ms</td>
       <td>200ms</td>      
     </tr>    
@@ -65,15 +68,32 @@ a bit faster than URL, but was __quite crash prone__ in Chrome and Firefox.
       <td>500ms</td>
       <td>500ms</td>
       <td>500ms</td>
-      <td>200ms</td>      
+      <td>200ms (amazing)</td>      
     </tr>
+    <tr>
+      <th>script.text</th>
+      <td>80ms</td>
+      <td>40ms</td>
+      <td>30ms</td>
+      <td>200ms</td>      
+    </tr>    
+    <tr>
+      <th>Function(code)</th>
+      <td>30ms</td>
+      <td>40ms</td>
+      <td>30ms</td>
+      <td>20ms</td>      
+    </tr>    
   </tbody>
 </table>
 
 
 __Discussion__
 
-The point of all this is to ferret out performance gains in time-to-first-byte and time-to-load.
+The point of all this had been to ferret out performance gains in time-to-first-byte and time-to-load.
+
+[2 AUG 2013 ] - However, the <code>Function(code)</code> strategy appears to have best performance across the board, 
+barely ahead of <code>script.text = code</code>.
 
 Using dataURI means the script source is larger than the original.
 Using <code>script.text</code> means you have to transform or encode or stringify the actual script source file.
@@ -92,11 +112,6 @@ attached to the DOM *before* <code>script.text = ...<code> assignment ~ __order 
 
 __Next Up__
 
-[1 AUG 2013 ] add Function(text) invocation test.
-
 [ 31 JUL 2013] - explore browsers' built-in lookahead + prefetch capabilities effectively to 
 load additional scripts as strings, such as in a build map file with each script url containing the
 stringified version of the source *(this will probably be in its own repo).*
-
-
-
