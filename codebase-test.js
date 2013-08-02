@@ -7,14 +7,16 @@
   scriptUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
   scriptUrl += 'codebase.js';
   
-  var scriptSrcText = window.codebase.toString();
+  var scriptText = window.codebase.toString();
+  var newFunction = Function(scriptText);
     
   // dataURI defined globally in codebase-dataURI.js
   // codebase defined globally in codebase.js      
   var strategies = {
     'dataURI' : dataURI,
-    'scriptSrc' : scriptUrl,
-    'scriptText' : scriptSrcText
+    'scriptUrl' : scriptUrl,
+    'scriptText' : scriptText,
+    'newFunction' : newFunction
   };
        
   var buttons = document.getElementsByTagName('button');
@@ -54,8 +56,12 @@
     
     script.id ='testScript';
 
-
-    if (method === 'scriptText') {
+    if (method === 'newFunction') {
+      
+      newFunction();
+      profile(start, method);
+      
+    } else if (method === 'scriptText') {
       // script text is not applied until attached to document
       parentNode.appendChild(script);      
       script.text = src;
