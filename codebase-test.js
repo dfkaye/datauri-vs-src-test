@@ -8,7 +8,7 @@
   scriptUrl += 'codebase.js';
   
   var scriptText = window.codebase.toString();
-  var newFunction = Function(scriptText);
+  var newFunction = Function(scriptText + '; window.codebase = codebase;');
     
   // dataURI defined globally in codebase-dataURI.js
   // codebase defined globally in codebase.js      
