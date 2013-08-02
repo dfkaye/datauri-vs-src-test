@@ -92,12 +92,16 @@ __Discussion__
 
 The point of all this had been to ferret out performance gains in time-to-first-byte and time-to-load.
 
-[2 AUG 2013 ] - However, the <code>Function(code)</code> strategy appears to have best performance across the board, 
-barely ahead of <code>script.text = code</code>.  In Chrome, the *first* invocation of <code>Function(code)</code> 
+[2 AUG 2013 ] - However, the <code>Function(code)</code> strategy appears to have best performance 
+across the board, barely ahead of <code>script.text = code</code>.  In Chrome, the *first* invocation 
+of <code>Function(code)</code> 
 __always__ took 100+ ms.
 
 Using dataURI means the script source is larger than the original.
-Using <code>script.text</code> means you have to transform or encode or stringify the actual script source file.
+
+Using <code>script.text</code> and <code>Function(code)</code> means you have to transform or encode 
+or stringify the actual script source file.
+
 Using <code>script.src</code> means you don't have to stringify the script file.
 
 Both text and dataURI mean more bytes in the initial page load if they're inlined.
