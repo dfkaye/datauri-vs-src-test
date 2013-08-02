@@ -113,7 +113,7 @@ see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow
 
 __[1 AUG 2013 ]__
 Setting <code>window.codebase = null;</code> in the removeScript() function revealed that script should be 
-attached to the DOM *before* <code>script.text = ...<code> assignment ~ __order matters!__
+attached to the DOM *before* <code>script.text = code</code> assignment ~ __order matters!__
 
 __Next Up__
 
