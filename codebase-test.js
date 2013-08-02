@@ -52,18 +52,24 @@
   
     var start = +new Date();
     var parentNode = removeScript();
-    var script = document.createElement('script');
+    var script;
     
-    script.id ='testScript';
-
+    // newFunction doesn't need a new script element
     if (method == 'newFunction') {
-      
-      console.log(src)
+
       src();
       profile(start, method);
       
-    } else if (method == 'scriptText') {
-      // script text is not applied until attached to document
+      return;
+    }
+    
+    // attach script src to new script element as src or text
+    script = document.createElement('script');
+    script.id ='testScript';
+
+    if (method == 'scriptText') {
+      // script text is not applied if script is not attached to document
+      // similar to style element
       parentNode.appendChild(script);      
       script.text = src;
       profile(start, method);
@@ -71,6 +77,7 @@
     } else {
 
       // script load handler must be defined before defining src attribute
+      // due to preemptive loading (particularly in IE)
       script.onload = script.onreadystatechange = function () {
         if (!script.readyState || script.readyState == 'loaded' || script.readyState == 'complete') {
           script.onload = script.onreadystatechange = null
@@ -78,7 +85,7 @@
         }
       }
     
-      // IE won't load src if script is already attached...
+      // ... and IE won't load src if script is already attached...
       script.src = src;
       parentNode.appendChild(script);
     }
@@ -86,6 +93,8 @@
   
   function profile(start, method) {
     
+    // if anything failed to load, this throws an error
+    // don't catch it, just let it happen so we're forced to re-visit
     window.codebase();
     
     var end = +new Date();
