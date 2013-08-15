@@ -18,6 +18,11 @@ Buttons let you re-load the codebase.js using the various strategies.
 Results indicate total time for each type of strategy (clean, get, run, end).
 
 
+__TODO__ 
+
+[ 14 AUG 2013 ] => calculate averages, enable large sample runs
+
+
 __Results__
 
 [ 2 AUG 2013 ]
