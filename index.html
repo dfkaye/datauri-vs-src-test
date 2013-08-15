@@ -9,13 +9,13 @@
     <script id='testScript' src='codebase.js'></script>
     <style>
       .button, .data {
+        float: left;
         width: 12em;
       }
       .button {
         margin:  0.5em  1.5em;
       }
       .data {
-        float: left;
         border: 1px solid greenyellow;
         padding: 2px 2px 2px 8px;
       }
@@ -53,15 +53,13 @@
       global codebase variable.
     </p>
 
-      <button type='button' class='button' data-method='scriptUrl'>scriptUrl</button>
-      <button type='button' class='button' data-method='dataURI'>dataURI</button>
-      <button type='button' class='button' data-method='scriptText'>scriptText</button>
-      <button type='button' class='button' data-method='newFunction'>newFunction</button>
-      <button type='button' class='button' data-method='removeScript'>removeScript()</button>
+    <button type='button' class='button' data-method='scriptUrl'>scriptUrl</button>
+    <button type='button' class='button' data-method='dataURI'>dataURI</button>
+    <button type='button' class='button' data-method='scriptText'>scriptText</button>
+    <button type='button' class='button' data-method='newFunction'>newFunction</button>
+    <button type='button' class='button' data-method='removeScript'>removeScript()</button>
 
     <div class='results'>
-    
-
       <div id='scriptUrlResults' class='clear data'></div>
       <div id='dataURIResults' class='data'></div>
       <div id='scriptTextResults' class='data'></div>
