@@ -9,6 +9,9 @@
     <script id='testScript' src='codebase.js'></script>
     <style>
       .results {
+        
+      }
+      .data {
         float: left;
         width: 12em;
         border: 1px solid greenyellow;
@@ -46,18 +49,27 @@
       global codebase variable.
     </p>
 
-    <button type='button' data-method='scriptUrl'>scriptUrl</button>
-    <button type='button' data-method='dataURI'>dataURI</button>
-    <button type='button' data-method='scriptText'>scriptText</button>
-    <button type='button' data-method='newFunction'>newFunction</button>
-    <button type='button' data-method='removeScript'>removeScript()</button>
-    
 
-    <div>
-      <div id='scriptUrlResults' class='results'></div>
-      <div id='dataURIResults' class='results'></div>
-      <div id='scriptTextResults' class='results'></div>
-      <div id='newFunctionResults' class='results'></div>
+    <div class='results'>
+    
+      <button type='button' data-method='scriptUrl'>scriptUrl</button>
+      <button type='button' data-method='dataURI'>dataURI</button>
+      <button type='button' data-method='scriptText'>scriptText</button>
+      <button type='button' data-method='newFunction'>newFunction</button>
+      <button type='button' data-method='removeScript'>removeScript()</button>
+      
+      <div id='scriptUrlResults' class='data'>
+        
+      </div>
+      <div id='dataURIResults' class='data'>
+        
+      </div>
+      <div id='scriptTextResults' class='data'>
+        
+      </div>
+      <div id='newFunctionResults' class='data'>
+        
+      </div>
     </div>
     
     <script src='codebase-test.js'></script>
