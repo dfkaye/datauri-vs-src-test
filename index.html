@@ -8,20 +8,23 @@
     <script src='codebase-dataURI.js'></script>
     <script id='testScript' src='codebase.js'></script>
     <style>
-      .buttons button {
+      .button, .data {
         width: 12em;
+      }
+      .button {
         margin:  0.5em  1.5em;
       }
       .data {
         float: left;
-        width: 12em;
         border: 1px solid greenyellow;
         padding: 2px 2px 2px 8px;
       }
+      .clear {
+        clear: both;
+      }      
       .sm {
         font-size: smaller;
       }
-
     </style>
   </head>
   <body>
@@ -52,20 +55,19 @@
 
 
     <div class='results'>
-      <div class='buttons'>
-        <button type='button' data-method='scriptUrl'>scriptUrl</button>
-        <button type='button' data-method='dataURI'>dataURI</button>
-        <button type='button' data-method='scriptText'>scriptText</button>
-        <button type='button' data-method='newFunction'>newFunction</button>
-        <button type='button' data-method='removeScript'>removeScript()</button>
-      </div>
+    
+      <button type='button' class='button' data-method='scriptUrl'>scriptUrl</button>
+      <button type='button' class='button' data-method='dataURI'>dataURI</button>
+      <button type='button' class='button' data-method='scriptText'>scriptText</button>
+      <button type='button' class='button' data-method='newFunction'>newFunction</button>
+      <button type='button' class='button' data-method='removeScript'>removeScript()</button>
 
-      <div id='scriptUrlResults' class='data'></div>
+      <div id='scriptUrlResults' class='clear data'></div>
       <div id='dataURIResults' class='data'></div>
       <div id='scriptTextResults' class='data'></div>
       <div id='newFunctionResults' class='data'></div>
       
-      <div id='scriptUrlAvg' class='data'></div>
+      <div id='scriptUrlAvg' class='clear data'></div>
       <div id='dataURIAvg' class='data'></div>
       <div id='scriptTextAvg' class='data'></div>
       <div id='newFunctionAvg' class='data'></div>
