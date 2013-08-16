@@ -1,9 +1,8 @@
 ;(function() {
   
-  //codebase-test.js
+  // codebase-test.js
   // unsexy vanilla js
   
-
   var scriptUrl = document.location.href;
   scriptUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
   scriptUrl += 'codebase.js';
@@ -20,11 +19,11 @@
     'newFunction' : newFunction
   };
   
-  
+  // result data
   var avgs = {};
   var results = {};
 
-       
+  // user actions     
   var buttons = document.getElementsByTagName('button');
   
   for (var i = 0; i < buttons.length; ++i) {
@@ -113,8 +112,13 @@
     results[method].push(time);
     
     !!console && console.log(results[method]);
-    
-    avgs[method] = results[method].join('');
+    var total = 0;
+    var data = results[method];
+    var length = data.length;
+    for (var i = 0; i < length; ++i) {
+      total += data[i]
+    }
+    avgs[method] = total / length;
     
     !!console && console.log(avgs[method]);
   }
