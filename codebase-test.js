@@ -105,7 +105,7 @@
     var time = Number((end - start) / 1000).toPrecision(3;
 
     
-    timings[method] || (timings[method] = []);
+    !!timings[method] || (timings[method] = []);
     timings[method].push(time);
     
     var data = timings[method];
