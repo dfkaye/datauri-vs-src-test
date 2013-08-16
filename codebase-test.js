@@ -20,8 +20,7 @@
   };
   
   // result data
-  var avgs = {};
-  var results = {};
+  var timings = {};
 
   // user actions     
   var buttons = document.getElementsByTagName('button');
@@ -104,23 +103,25 @@
     
     var end = +new Date();
     var time = ((end - start) / 1000);
-    var element = document.getElementById(method + 'Results');
     
-    element.innerHTML += (method + ' took ' + time + ' seconds.<br/>');
+    document.getElementById(method + 'Results').innerHTML += (method + ' took ' + time + ' seconds.<br/>');
     
-    results[method] || (results[method] = []);
-    results[method].push(time);
+    timings[method] || (timings[method] = []);
+    timings[method].push(time);
     
-    !!console && console.log(results[method]);
+    !!console && console.log(timings[method]);
+    
     var total = 0;
-    var data = results[method];
+    var data = timings[method];
     var length = data.length;
+    
     for (var i = 0; i < length; ++i) {
       total += data[i]
     }
-    avgs[method] = total / length;
+
+    !!console && console.log(total / length);
     
-    !!console && console.log(avgs[method]);
+    document.getElementById(method + 'Avgs').innerHTML = (total / length) + ' seconds';
   }
   
   function removeScript() {
