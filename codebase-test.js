@@ -3,6 +3,7 @@
   //codebase-test.js
   // unsexy vanilla js
   
+
   var scriptUrl = document.location.href;
   scriptUrl = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
   scriptUrl += 'codebase.js';
@@ -18,6 +19,11 @@
     'scriptText' : scriptText,
     'newFunction' : newFunction
   };
+  
+  
+  var avgs = {};
+  var results = {};
+
        
   var buttons = document.getElementsByTagName('button');
   
@@ -98,9 +104,19 @@
     window.codebase();
     
     var end = +new Date();
-    var results = document.getElementById(method + 'Results');
+    var time = ((end - start) / 1000);
+    var element = document.getElementById(method + 'Results');
     
-    results.innerHTML += (method + ' took ' + ((end - start) / 1000) + ' seconds.<br/>')
+    element.innerHTML += (method + ' took ' + time + ' seconds.<br/>');
+    
+    results[method] || (results[method] = []);
+    results[method].push(time);
+    
+    !!console && console.log(results[method]);
+    
+    avgs[method] = results[method].join('');
+    
+    !!console && console.log(avgs[method]);
   }
   
   function removeScript() {
