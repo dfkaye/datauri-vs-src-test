@@ -121,7 +121,7 @@
 
     !!console && console.log(total / length);
     
-    document.getElementById(method + 'Avg').innerHTML = 'Average: \n' + Number(total / length).toPrecision(3) + ' seconds';
+    document.getElementById(method + 'Avg').innerHTML = 'Average: \\n' + Math.floor(total / length).toPrecision(3) + ' seconds';
   }
   
   function removeScript() {
