@@ -15,19 +15,10 @@ View the test page live on rawgithub.com (thanks again, to Ryan Grove ~ @rgrove)
 
 Buttons let you re-load the codebase.js using the various strategies.
 
-Results indicate total time for each type of strategy (clean, get, run, end).
-
-
-__TODO__ 
-
-[ 14 AUG 2013 ] => calculate averages, enable large sample runs
-
 
 __Results__
 
-[ 2 AUG 2013 ]
-
-Added <code>Function(code)</code> strategy to compare performance vs. scripting dom elements.
+Results indicate total time in milliseconds for each type of strategy (clean, get, run, end), plus average times.
 
 [ 1 AUG 2013 ] 
 
@@ -50,6 +41,14 @@ The <code>script.src = dataURI</code> strategy performed a bit faster than <code
 except that it was __quite crash prone__ in Chrome and Firefox, and often performed orders of magnitude worse in 
 Firefox on the first hit.
 
+[ 2 AUG 2013 ]
+
+Added <code>Function(code)</code> strategy to compare performance vs. scripting dom elements.
+
+[ 15 AUG 2013 ] 
+
+Added averages in display.
+
 <table>
   <thead>
     <tr>
@@ -62,32 +61,32 @@ Firefox on the first hit.
   </thead>
   <tbody>
     <tr>
+      <th>src URL</th>
+      <td>600ms</td>
+      <td>600ms</td>
+      <td>520ms</td>
+      <td>200ms (amazing)</td>      
+    </tr>  
+    <tr>
       <th>dataURI</th>
-      <td>200ms (crash prone)</td>
-      <td>200ms (crash prone)</td>
-      <td>200ms</td>
-      <td>200ms</td>      
+      <td>100ms (crash prone)</td>
+      <td>125ms (crash prone)</td>
+      <td>185ms</td>
+      <td>250ms</td>      
     </tr>    
     <tr>
-      <th>src URL</th>
-      <td>500ms</td>
-      <td>500ms</td>
-      <td>500ms</td>
-      <td>200ms (amazing)</td>      
-    </tr>
-    <tr>
       <th>script.text</th>
-      <td>80ms</td>
       <td>40ms</td>
-      <td>30ms</td>
-      <td>200ms</td>      
+      <td>80ms</td>
+      <td>44ms</td>
+      <td>185ms</td>      
     </tr>    
     <tr>
       <th>Function(code)</th>
-      <td>30ms (100ms first time)</td>
-      <td>40ms</td>
-      <td>30ms</td>
-      <td>20ms</td>      
+      <td>25ms (100ms first time)</td>
+      <td>28ms</td>
+      <td>26ms</td>
+      <td>25ms</td>      
     </tr>    
   </tbody>
 </table>
@@ -102,24 +101,24 @@ across the board, barely ahead of <code>script.text = code</code>.  In Chrome, t
 of <code>Function(code)</code> __always__ took 100+ ms.  Tobie Langel was right. Lazy evaluation reduces 
 startup latency: [Lazy evaluation of CommonJS modules](http://calendar.perfplanet.com/2011/lazy-evaluation-of-commonjs-modules/)
 
-
-Using dataURI means the script source is larger than the original.
+Using <code>dataURI</code> means the script string is *larger* than the original source.
 
 Using <code>script.text</code> and <code>Function(code)</code> means you have to transform or encode 
 or stringify the actual script source file.
 
-Using <code>script.src</code> means you don't have to stringify the script file.
+Using <code>script.src</code> means you don't have to stringify the script file but you're then subject to 
+request latency over the network.
 
-Both text and dataURI mean more bytes in the initial page load if they're inlined.
-But if they reside as vars inside a src-referenced script, the html initial payload isn't so bloated.
+Both <code>script.text</code> and <code>dataURI</code> mean more bytes in the initial page load if they're inlined.
+But if they reside as vars or map entries in a src-referenced script, then the initial html payload isn't so bloated.
 
 [ 24 JUL 2013 ] - dataURI performance and power consumption on mobile poorer than URL fetch - 
 see [data-uris are slow on mobile](http://www.mobify.com/blog/data-uris-are-slow-on-mobile/)
 
-
 __[1 AUG 2013 ]__
 Setting <code>window.codebase = null;</code> in the removeScript() function revealed that script should be 
 attached to the DOM *before* <code>script.text = code</code> assignment ~ __order matters!__
+
 
 __Next Up__
 
