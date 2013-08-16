@@ -102,15 +102,15 @@
     window.codebase();
     
     var end = +new Date();
-    var time = Number((end - start) / 1000).toPrecision(3);
+    var time = Number((end - start) / 1000).toPrecision(3;
 
     
     timings[method] || (timings[method] = []);
     timings[method].push(time);
     
-    var total = 0;
     var data = timings[method];
     var length = data.length;
+    var total = 0;
     
     for (var i = 0; i < length; ++i) {
       total += data[i];
@@ -119,7 +119,7 @@
     !!console && console.log(timings[method]);
     !!console && console.log(total / length);
     
-    document.getElementById(method + 'Results').innerHTML += (length + ': ' + time + ' s<br/>');
+    document.getElementById(method + 'Results').innerHTML += (length + ':  ' + time + ' s<br/>');
     document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toPrecision(3) + ' s';
   }
   
