@@ -104,7 +104,6 @@
     var end = +new Date();
     var time = Number((end - start) / 1000).toPrecision(3;
 
-    
     !!timings[method] || (timings[method] = []);
     timings[method].push(time);
     
@@ -135,9 +134,7 @@
     }
     
     parentNode = testScript.parentNode;
-            
     parentNode.removeChild(testScript);
-    
     return parentNode;
   }
 
