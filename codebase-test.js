@@ -102,26 +102,25 @@
     window.codebase();
     
     var end = +new Date();
-    var time = ((end - start) / 1000);
-    
-    document.getElementById(method + 'Results').innerHTML += (method + ' took ' + time + ' seconds.<br/>');
+    var time = Number((end - start) / 1000).toPrecision(3);
+
     
     timings[method] || (timings[method] = []);
     timings[method].push(time);
-    
-    !!console && console.log(timings[method]);
     
     var total = 0;
     var data = timings[method];
     var length = data.length;
     
     for (var i = 0; i < length; ++i) {
-      total += data[i]
+      total += data[i];
     }
 
+    !!console && console.log(timings[method]);
     !!console && console.log(total / length);
     
-    document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toPrecision(3) + ' seconds';
+    document.getElementById(method + 'Results').innerHTML += (length + ': ' + time + ' s<br/>');
+    document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toPrecision(3) + ' s';
   }
   
   function removeScript() {
