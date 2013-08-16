@@ -102,7 +102,7 @@
     window.codebase();
     
     var end = +new Date();
-    var time = end - start;
+    var time = Number(end - start);
 
     method in timings || (timings[method] = []);
     timings[method].push(time);
@@ -118,7 +118,7 @@
     !!console && console.log(timings[method]);
     !!console && console.log(total + ', ' + length);
     
-    document.getElementById(method + 'Results').innerHTML += (length + ':  ' + Number(time).toFixed(3) + ' ms<br/>');
+    document.getElementById(method + 'Results').innerHTML += (length + ':  ' + Number(time) + ' ms<br/>');
     document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toFixed(3) + ' ms';
   }
   
