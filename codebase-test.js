@@ -118,8 +118,8 @@
     !!console && console.log(timings[method]);
     !!console && console.log(total + ', ' + length);
     
-    document.getElementById(method + 'Results').innerHTML += (length + ':  ' + Number(time) + ' ms<br/>');
-    document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toFixed(3) + ' ms';
+    document.getElementById(method + 'Results').innerHTML += (length + ':  ' + Number(time).toFixed(2) + ' ms<br/>');
+    document.getElementById(method + 'Avg').innerHTML = 'Avg: ' + Number(total / length).toFixed(2) + ' ms';
   }
   
   function removeScript() {
