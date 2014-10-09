@@ -15,11 +15,10 @@ Test page loads jquery files first, then loads codebase.js.
 
 Buttons let you re-load the codebase.js using the various strategies.
 
-<a href='https://rawgithub.com/dfkaye/datauri-vs-src-test/master/index.html'
+<a href='https://rawgit.com/dfkaye/datauri-vs-src-test/master/index.html'
   title='opens new tab or window' target='_new'>
-View the test page on rawgithub
-</a> (thanks again, to Ryan Grove ~ @rgrove) 
-
+View the test page on rawgit
+</a>
 
 __Results__
 
